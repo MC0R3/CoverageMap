@@ -2,11 +2,171 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8" />
+    <title><?=$config['title']?></title>
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <link rel="icon" type="image/ico" sizes="32x32" href="./favicon.ico">
+    <link rel="icon" type="image/ico" sizes="16x16" href="./favicon.ico">
+    <link rel="shortcut icon" href="./favicon.ico">
+
+    <!-- CSS styles -->
+    <style>
+        /* Your CSS styles here */
+
+        /* Collapsible section */
+        .collapsible {
+            margin-bottom: 10px;
+        }
+
+        .collapsible-content {
+            display: none;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .collapsible-button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Your existing code here -->
+
+    <!-- Collapsible section for legendSort -->
+    <div class="collapsible">
+        <div class="collapsible-button" onclick="toggleLegendSort()">Toggle Legend Sort</div>
+        <div class="collapsible-content" id="legendSortContent">
+            <!-- LegendSort content here -->
+        </div>
+    </div>
+
+    <!-- Your existing code continues here -->
+
+    <!-- JavaScript code -->
+    <script>
+        function toggleLegendSort() {
+            var content = document.getElementById("legendSortContent");
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
+<html>
+<head>
+    <title>Collapsible Legend Sort</title>
+    <style>
+        .fill {
+            top: 59px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            width: auto;
+            height: auto;
+        }
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            width: <?= $config['legendWidth']?>px;
+            height: 65px;
+            border: 1px solid black;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        .legend {
+            text-align: left;
+            line-height: 18px;
+            height: 480px;
+            overflow-y: auto;
+            display: none; /* Initially hide the legend */
+        }
+        .legend a {
+            color: black;
+            width: 18px;
+            height: 18px;
+            margin-right: 8px;
+            opacity: 0.7;
+            text-decoration: none;
+        }
+        .legend a:hover {
+            color: white;
+            background-color: dodgerblue;
+        }
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+            background-color: #eee;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        .collapsible::after {
+            content: '\002B'; /* Plus symbol */
+            font-size: 13px;
+            color: black;
+            float: right;
+            margin-left: 5px;
+        }
+        .active::after {
+            content: "\2212"; /* Minus symbol */
+        }
+        .content {
+            display: none;
+            padding: 0 18px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="fill"></div>
+    <div class="info">
+        <h4>Legend Sort</h4>
+        <div class="collapsible">Click to expand/collapse</div>
+        <div class="content">
+            <div class="legend">
+                <!-- Your legend content goes here -->
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Toggle visibility of legend on click
+        var collapsible = document.querySelector('.collapsible');
+        var content = document.querySelector('.content');
+
+        collapsible.addEventListener('click', function() {
+            content.classList.toggle('active');
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
+<html>
     <head>
         <meta charset="utf-8" />
         <title><?=$config['title']?></title>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+
 
         <link rel="icon" type="image/ico" sizes="32x32" href="./favicon.ico">
         <link rel="icon" type="image/ico" sizes="16x16" href="./favicon.ico">
@@ -145,7 +305,7 @@ function style(feature) {
         dashArray: '3',
         fillOpacity: 0.7,
         fillColor: feature.properties.color
-	};
+        };
 }
 
 function highlightFeature(e) {
@@ -243,7 +403,6 @@ function loadScanAreaPolygons() {
                             fillOpacity: features.properties.fillOpacity || 0.7,
                             fillColor: features.properties.color,
                         });
-                        featureLayer.bindPopup(getScanAreaPopupContent(features.properties, size));
                     }
                 }
             });
@@ -277,14 +436,6 @@ function loadBorderPolygons() {
     });
 }
 
-function getScanAreaPopupContent(properties, size) {
-    const content = `
-      <center>
-        <h6>Area: <b>${properties.name}</b></h6>
-        Size: ${size} km<sup>2</sup>
-      </center>`;
-    return content;
-}
 </script>
 
 <style>
@@ -338,5 +489,19 @@ function getScanAreaPopupContent(properties, size) {
     border-radius: 4px;
     background-color: rgba(0, 0, 0, .5);
     -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+/* Example media query for small screens */
+@media (max-width: 767px) {
+    /* CSS rules specific to small screens */
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .info {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust other styles as needed */
 }
 </style>
