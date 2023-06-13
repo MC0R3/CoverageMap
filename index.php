@@ -232,7 +232,6 @@ function loadScanAreaPolygons() {
                             fillOpacity: features.properties.fillOpacity || 0.7,
                             fillColor: features.properties.color,
                         });
-                        featureLayer.bindPopup(getScanAreaPopupContent(features.properties, size));
                     }
                 }
             });
@@ -266,14 +265,6 @@ function loadBorderPolygons() {
     });
 }
 
-function getScanAreaPopupContent(properties, size) {
-    const content = `
-      <center>
-        <h6>Area: <b>${properties.name}</b></h6>
-        Size: ${size} km<sup>2</sup>
-      </center>`;
-    return content;
-}
 </script>
 
 <style>
