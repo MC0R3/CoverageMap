@@ -109,20 +109,6 @@ info.update = function (props) {
 };
 info.addTo(map);
 
-// Legend
-let geojson;
-const legend = L.control({position: 'topright'});
-legend.onAdd = function (map) {
-    const areas = loadScanAreaPolygons();
-    const div = L.DomUtil.create('div', 'info legend');
-    let areaNames = Object.keys(areas);
-    let html = `<span><b>${areaNames.length} total ${areasTextPlural}</b></span><hr>`;
-    div.innerHTML += html;
-    return div;
-};
-legend.addTo(map);
-// TODO: Set legend width to longest name length
-
 function centerMap(lat, lng, zoom = 13) {
     map.setView([lat, lng], zoom || 13)
 }
