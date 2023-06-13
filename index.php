@@ -38,7 +38,7 @@
             foreach ($headerLeft as $nav) {
                 echo '
                 <li class="nav-item">
-                    <a class="nav-link" href="' . $nav['url'] . '" target="_blank"><i class="' . $nav['icon'] . '"></i>&nbsp;' . $nav['name'] . '</a>
+                    <a class="nav-link" href="' . $nav['url'] . '" target="_self"><i class="' . $nav['icon'] . '"></i>&nbsp;' . $nav['name'] . '</a>
                 </li>';
             }
         }
