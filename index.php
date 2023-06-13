@@ -111,6 +111,7 @@ info.addTo(map);
 
 // Legend
 let geojson;
+const legend = L.control({position: 'topright'});
 legend.onAdd = function (map) {
     const areas = loadScanAreaPolygons();
     const div = L.DomUtil.create('div', 'info legend');
