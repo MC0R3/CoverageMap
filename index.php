@@ -117,18 +117,6 @@ legend.onAdd = function (map) {
     const div = L.DomUtil.create('div', 'info legend');
     let areaNames = Object.keys(areas);
     let html = `<span><b>${areaNames.length} total ${areasTextPlural}</b></span><hr>`;
-    if (legendSort) {
-        areaNames.sort();
-    }
-    for (const areaName of areaNames) {
-        const area = areas[areaName];
-        if (areaName.length > longestName) {
-            longestName = areaName.length;
-        }
-        html += `
-        <a href="#" onclick="centerMap(${area.center.lat},${area.center.lng},${area.zoom})">&ndash; ${areaName}</a>
-        <br>`;
-    }
     div.innerHTML += html;
     return div;
 };
