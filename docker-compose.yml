@@ -1,0 +1,14 @@
+services:
+  coveragemap:
+    build: .
+    container_name: CoverageMap
+    restart: unless-stopped
+    ports:
+      - "9050:8080"
+    volumes:
+      - ./config.php:/var/www/html/config.php
+      - ./areas.json:/var/www/html/areas.json
+      - ./borders.json:/var/www/html/borders.json
+      # - ./favicon.ico:/var/www/html/favicon.ico
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
