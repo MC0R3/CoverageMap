@@ -1,0 +1,70 @@
+.fill {
+    top: 59px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    width: auto;
+    height: auto;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+.legend {
+    text-align: left;
+    line-height: 18px;
+    height: 480px;
+    overflow-y: auto;
+}
+
+.legend a {
+    color: black;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.legend a:hover {
+    color: white;
+    background-color: dodgerblue;
+}
+
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+}
+
+/* Example media query for small screens */
+@media (max-width: 767px) {
+    .navbar-brand {
+        font-size: 18px;
+    }
+
+    .info {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust other styles as needed */
+}
